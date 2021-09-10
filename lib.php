@@ -52,5 +52,6 @@ function dumpcsv ( $lines ) {
 function savejson ( $data, $file ) {
 	$fd = fopen($file, "w");
 	if ( $fd != FALSE ) {
+	}
 }
 ?>
