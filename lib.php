@@ -55,7 +55,7 @@ function read_csv ( $file="ilmot.csv" ) {
     fclose($open);
 	$myarray = array();
 	foreach($array as $row) {
-	  $myarray[$row[0] = $row[1];
+	  $myarray["$row[0]"] = $row[1];
 	}
 	return $myarray;
   }

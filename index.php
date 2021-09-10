@@ -52,7 +52,7 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
     echo "</form>";
     echo "<tr>";
     sort($sorted);
-    foreach($sorted as $row)
+    foreach($array as $row)
         {
         $index=0;
         foreach($row as $col)
@@ -67,5 +67,5 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
     echo "<pre>";
 	save_json (json_encode($sorted, JSON_PRETTY_PRINT));
     //To display array data
-    print_r(json_encode($sorted, JSON_PRETTY_PRINT));
+    print_r($sorted);
     echo "</pre>";
