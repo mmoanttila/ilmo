@@ -49,7 +49,7 @@ function dumpcsv ( $lines ) {
 	fclose($fd);
 }
 
-function savejson ( $data, $file="ilmot.json" ) {
+function save_json ( $data, $file="ilmot.json" ) {
 	$fd = fopen($file, "w");
 	if ( $fd != FALSE ) {
 		fwrite ($fd, $data);
