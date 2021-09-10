@@ -18,9 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	$added=addcsv ( $nro, $nimi, $tapahtuma . ".csv" );
 	if ( $added == FALSE ) {
-	?>
-<pre>Tiedoston kirjoitus ei onnistunut!!</pre>
-	<?php
+		echo "<pre>Tiedoston " . $tapahtuma . ".csv kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
 	} else {
 	}
 
@@ -29,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 /*** RETRIEVE LOGGED IN USER INFORMATION ***/
 $user = wp_get_current_user();
 
-if (($open = fopen($tapahtuma . ".csv", "r")) !== FALSE) 
+// if (($open = fopen($tapahtuma . ".csv", "r")) !== FALSE) 
+if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE) 
 {
 	while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
     {        
