@@ -1,4 +1,5 @@
 <?php
+/* vim: set ai sw=2: */
 
 function head ($title="karhuenduro.fi") {
   //  print "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\n";
@@ -41,6 +42,22 @@ function save_csv ( $lines, $file="ilmot.csv" ) {
 		  fputcsv ($fd, $row);
 	  }
 	  fclose($fd);
+  }
+}
+
+read_csv ($file="ilmot.csv") {
+  if (($open = fopen( $file, "r")) !== FALSE) 
+  {
+	while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
+	{        
+	  $array[] = $data; 
+	}
+    fclose($open);
+	$myarray = array();
+	foreach($array as $row) {
+	  $myarray[$row[0] = $row[1];
+	}
+	return $myarray;
   }
 }
 

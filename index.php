@@ -38,15 +38,8 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
 }
     echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
 	echo "<H5>" . $tapahtuma . ": </H5>\n";
-    $sorted = array();
-    sort ($array, SORT_NUMERIC);
+    $sorted = read_csv("Murtamonsankicrossi_2021.csv");
     $line = 0;
-    foreach($array as $row)
-	{
-	  $sorted[$line][0] = $row[0];
-	  $sorted[$line][1] = $row[1];
-         $line++;
-	}
     echo "<style> .short-width td {   width: 10%; } </style>";
     echo "<table style=\"width:50%\">\n";
 	echo "  <col style=\"width:10%\"/><col style=\"width:90%\"/>\n";
@@ -74,5 +67,5 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
     echo "<pre>";
 	save_json (json_encode($sorted, JSON_PRETTY_PRINT));
     //To display array data
-    // print_r(json_encode($sorted, JSON_PRETTY_PRINT));
+    print_r(json_encode($sorted, JSON_PRETTY_PRINT));
     echo "</pre>";
