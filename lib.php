@@ -34,4 +34,9 @@ function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
   }
 }
 
+function dumpcsv ( $lines ) {
+	$fp = fopen('php://output', 'wb');
+	fclose($fp);
+}
+
 ?>
