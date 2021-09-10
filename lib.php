@@ -45,7 +45,7 @@ function save_csv ( $lines, $file="ilmot.csv" ) {
   }
 }
 
-read_csv ($file="ilmot.csv") {
+function read_csv ( $file="ilmot.csv" ) {
   if (($open = fopen( $file, "r")) !== FALSE) 
   {
 	while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
