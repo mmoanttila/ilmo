@@ -5,19 +5,30 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 
 require_once("wp-authenticate.php");
 
-/*** REQUIRE USER AUTHENTICATION ***/
-login();
+/*** LOG OUT CURRENT USER ***/
+if($_GET['logout'] == 'true')
+   wp_logout();
 
-/*** RETRIEVE LOGGED IN USER INFORMATION ***/
-$user = wp_get_current_user();
+/*** IF THE FORM HAS BEEN SUBMITTED, ATTEMPT AUTHENTICATION ***/
+if(count($_POST) > 0)
+   authenticate();
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-   <title>Login</title>
+   <title>Ilmo<TM></title>
 </head>
 <body>
-<p>Welcome <?php echo $user->user_firstname . " " . $user->user_lastname; ?></p>
-<p><a href="/ilmo/login.php?logout=true">Click here to log out</a></p>
+<form action="login.php" method="post">
+   <?php
+   if(count($_POST) > 0)
+      echo "<p>Invalid user name or password.</p>";
+   ?>
+   <input type="text" autocomplete="off" placeholder="Username" name="username"/>
+   <input type="password" autocomplete="off" placeholder="Password" name="password"/>
+   <label><input type="checkbox" name="remember" value="1" />Remember me</label>
+   <button type="submit" value="Submit">Submit</button>
+</form>
 </body>
 </html>
