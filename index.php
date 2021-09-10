@@ -71,7 +71,7 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
         }
     echo "</tbody></table>\n";
     echo "<br><hr>\n";
-//    echo "<pre>";
+    echo "<pre>";
     //To display array data
-//    print_r($sorted);
-//    echo "</pre>";
+    print_r(json_encode($sorted, JSON_PRETTY_PRINT));
+    echo "</pre>";
