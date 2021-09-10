@@ -31,8 +31,10 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
 	}
     echo "<style> .short-width td {   width: 10%; } </style>";
     echo "<table>\n";
+	echo "  <col style=\"width:10%\"><col style=\"width:90%\">\n";
+    echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th></tr></thead>\n";
+	echo "  <tbody>\n";
     echo "<form method=\"POST\">";
-    echo "<tr><td class=\"short-width\">Nro:</td><td>Nimi:</td></tr>\n";
     echo "<tr><td class=\"short-width\"><input type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" value\"\"></td></tr>\n";
     echo "<tr><td colspan=\"2\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
     echo "</form>";
@@ -48,7 +50,7 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
   	    }
         echo "</tr>\n";
         }
-    echo "</table>\n";
+    echo "</tbody></table>\n";
     echo "<br><hr>\n";
 //    echo "<pre>";
     //To display array data
