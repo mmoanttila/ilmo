@@ -30,8 +30,8 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
          $line++;
 	}
     echo "<style> .short-width td {   width: 10%; } </style>";
-    echo "<table>\n";
-	echo "  <col style=\"width:10%\"><col style=\"width:90%\">\n";
+    echo "<table style=\"width:50%\">\n";
+	echo "  <col style=\"width:10%\"/><col style=\"width:90%\"/>\n";
     echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th></tr></thead>\n";
 	echo "  <tbody>\n";
     echo "<form method=\"POST\">";
