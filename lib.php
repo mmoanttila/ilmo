@@ -34,9 +34,23 @@ function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
   }
 }
 
-function dumpcsv ( $lines ) {
-	$fp = fopen('php://output', 'wb');
-	fclose($fp);
+function save_csv ( $lines, $file ) {
+  $fd = fopen($file, "w");
+  if ( $fd != FALSE ) {
+	  foreach ($lines as $row) {
+		  fputcsv ($fd, $row);
+	  }
+	  fclose($fd);
+  }
 }
 
+function dumpcsv ( $lines ) {
+	$fd = fopen('php://output', 'wb');
+	fclose($fd);
+}
+
+function savejson ( $data, $file ) {
+	$fd = fopen($file, "w");
+	if ( $fd != FALSE ) {
+}
 ?>
