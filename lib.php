@@ -34,7 +34,7 @@ function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
   }
 }
 
-function save_csv ( $lines, $file ) {
+function save_csv ( $lines, $file="ilmot.csv" ) {
   $fd = fopen($file, "w");
   if ( $fd != FALSE ) {
 	  foreach ($lines as $row) {
@@ -49,9 +49,11 @@ function dumpcsv ( $lines ) {
 	fclose($fd);
 }
 
-function savejson ( $data, $file ) {
+function savejson ( $data, $file="ilmot.json" ) {
 	$fd = fopen($file, "w");
 	if ( $fd != FALSE ) {
+		fwrite ($fd, $data);
+		fclose ($fd);
 	}
 }
 ?>

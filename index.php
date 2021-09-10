@@ -72,7 +72,7 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
     echo "</tbody></table>\n";
     echo "<br><hr>\n";
     echo "<pre>";
-	save_csv ($sorted, "testi.csv");
+	save_json (json_encode($sorted, JSON_PRETTY_PRINT));
     //To display array data
-    print_r(json_encode($sorted, JSON_PRETTY_PRINT));
+    // print_r(json_encode($sorted, JSON_PRETTY_PRINT));
     echo "</pre>";
