@@ -53,14 +53,14 @@ function read_csv ( $file="ilmot.csv" ) {
 	  $array[] = $data; 
 	}
     fclose($open);
-    // $myarray = array();
+    $myarray = array();
 	// foreach($array as $row) {
 	//  $myarray[$row[0]] = "$row[1]";
 	$line = 0;
     foreach($array as $row)
     {
-      $sorted[$line][0] = $row[0];
-      $sorted[$line][1] = $row[1];
+      $myarray[$line][0] = $row[0];
+      $myarray[$line][1] = $row[1];
       $line++;
     }
 	return $myarray;
