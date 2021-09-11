@@ -19,16 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 }
-
-echo "<html><head>\n";
-echo "<title>Ilmo " . $tapahtuma . "</title></head>\n";
-echo "<body>\n";
-
+?>
+<!Doctype html>
+<html lang="fi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<?php
+echo "<title>Ilmo " . $tapahtuma . "</title>\n";
+?>
+<style> .short-width td {   width: 10px; } </style>
+</head>
+<body>
+<?
 echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
 ?>
-<style> .short-width td {   width: 10%; } </style>
 <table style="width:50%">
-<col style="width:10%"/><col style="width:90%"/>
+<!-- <col style="width:10%"/><col style="width:90%"/> -->
 <thead><tr><th class="short-width">Nro:</th><th>Nimi:</th></tr></thead>
 <tbody>
 <form method="POST">
