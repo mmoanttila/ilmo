@@ -54,7 +54,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 	  $index=0;
       foreach($row as $col)
   	  {
-		echo "<td><input name='var".$index."' type='text' value='".$col."'></td>";
+		echo "<td>" . $col . "</td>";
         $index++;
   	  }
       echo "</tr>\n";
