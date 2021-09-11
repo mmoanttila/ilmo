@@ -24,7 +24,7 @@ echo "<html><head>\n";
 echo "<title>Ilmo " . $tapahtuma . "</title></head>\n";
 echo "<body>\n";
 
-echo "<H2>" . $ tapahtuma. "</H2>\n";
+echo "<H2>" . $tapahtuma. "</H2>\n";
 $sorted = read_csv($file);
 if ($sorted !== FALSE ) {
     $line = 0;
@@ -59,6 +59,7 @@ if ($sorted !== FALSE ) {
     //To display array data
     //print_r($sorted);
 	echo "</pre>";
+} // Saatiin luettua csv
 ?>
 </body>
 </html>
