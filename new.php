@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nimi = test_input($_POST["Nimi"]);
 //    $tapahtuma = test_input($_POST["Tapahtuma"]);
 	
-	$added=addcsv ( $nro, $nimi, $tapahtuma . ".csv" );
+	$added=addcsv ( $nro, $nimi, $file );
 	if ( $added == FALSE ) {
-		echo "<pre>Tiedoston " . $tapahtuma . ".csv kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+		echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
 	} else {
 	}
 
