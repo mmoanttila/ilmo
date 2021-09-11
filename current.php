@@ -1,5 +1,5 @@
 <?php
 $tapahtuma = "Järilän sprint";
-$file = "jarilan-sprint.csv";
+$file = "ilmot/jarilan-sprint.csv";
 
 ?>
