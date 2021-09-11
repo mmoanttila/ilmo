@@ -24,10 +24,7 @@ echo "<html><head>\n";
 echo "<title>Ilmo " . $tapahtuma . "</title></head>\n";
 echo "<body>\n";
 
-echo "<H2>" . $tapahtuma. "</H2>\n";
-$sorted = read_csv($file);
-if ($sorted !== FALSE ) {
-    $line = 0;
+echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
 ?>
 <style> .short-width td {   width: 10%; } </style>
 <table style="width:50%">
@@ -41,25 +38,28 @@ if ($sorted !== FALSE ) {
 </form>
 <tr>
 <?php
+$sorted = read_csv($file);
+if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
+    $line = 0;
     sort($sorted);
     foreach($array as $row)
-        {
-        $index=0;
-        foreach($row as $col)
-  	    {
-                echo "<td><input name='var".$index."' type='text' value='".$col."'></td>";
-    	        $index++;
-  	    }
-        echo "</tr>\n";
-        }
-    echo "</tbody></table>\n";
-    echo "<br><hr>\n";
-    echo "<pre>";
-	save_json (json_encode($sorted, JSON_PRETTY_PRINT));
-    //To display array data
-    //print_r($sorted);
-	echo "</pre>";
+    {
+	  $index=0;
+      foreach($row as $col)
+  	  {
+		echo "<td><input name='var".$index."' type='text' value='".$col."'></td>";
+        $index++;
+  	  }
+      echo "</tr>\n";
+    }
 } // Saatiin luettua csv
+echo "</tbody></table>\n";
+echo "<br><hr>\n";
+echo "<pre>";
+save_json (json_encode($sorted, JSON_PRETTY_PRINT));
+//To display array data
+//print_r($sorted);
+echo "</pre>";
 ?>
 </body>
 </html>
