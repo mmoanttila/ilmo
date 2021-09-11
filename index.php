@@ -52,7 +52,7 @@ if (($open = fopen("Murtamonsankicrossi_2021.csv", "r")) !== FALSE)
     echo "</form>";
     echo "<tr>";
     sort($sorted);
-    foreach($array as $row)
+    foreach($sorted as $row)
         {
         $index=0;
         foreach($row as $col)
