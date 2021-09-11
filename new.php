@@ -42,7 +42,7 @@ $sorted = read_csv($file);
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     $line = 0;
     sort($sorted);
-    foreach($array as $row)
+    foreach($sorted as $row)
     {
 	  $index=0;
       foreach($row as $col)
