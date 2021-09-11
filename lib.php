@@ -54,12 +54,18 @@ function read_csv ( $file="ilmot.csv" ) {
 	}
     fclose($open);
     // $myarray = array();
-	foreach($array as $row) {
-	  $myarray[$row[0]] = "$row[1]";
-	}
-	print_r ($myarray);
+	// foreach($array as $row) {
+	//  $myarray[$row[0]] = "$row[1]";
+	$line = 0;
+    foreach($array as $row)
+    {
+      $sorted[$line][0] = $row[0];
+      $sorted[$line][1] = $row[1];
+      $line++;
+    }
 	return $myarray;
   }
+  return FALSE;
 }
 
 function dumpcsv ( $lines ) {
