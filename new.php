@@ -30,16 +30,16 @@ echo "<title>Ilmo " . $tapahtuma . "</title>\n";
 <style> .short-width td {   width: 10px; } </style>
 </head>
 <body>
-<?
+<?php
 echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
 ?>
-<table style="width:50%">
+<table border="1" style="width:50%">
 <!-- <col style="width:10%"/><col style="width:90%"/> -->
-<thead><tr><th class="short-width">Nro:</th><th>Nimi:</th></tr></thead>
+<thead><tr><th style="width:1px">Nro:</th><th>Nimi:</th></tr></thead>
 <tbody>
 <form method="POST">
 <input type="hidden" name="Tapahtuma" value="">
-<tr><td><input type="number" name="Nro" size="4" value=""></td><td><input type="text" name="Nimi" value""></td></tr>
+<tr><td style="width:1px"><input type="number" name="Nro" size="4" value=""></td><td><input type="text" name="Nimi" value""></td></tr>
 <tr><td colspan="2" align="center"><input type="Submit" value="Lisää"></td></tr>
 <tr><td colspan="2" bgcolor="#b6b6b6" align="center">Ilmoittautuneet:</td></tr>
 </form>
