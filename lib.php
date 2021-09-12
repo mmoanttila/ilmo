@@ -1,5 +1,5 @@
 <?php
-/* vim: set ai sw=2 fileencoding=utf-8 expandtab*/
+/* vim: set ai sw=2 fileencoding=utf-8 expandtab */
 
 function head ($title="karhuenduro.fi") {
   //  print "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\n";
