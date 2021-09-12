@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nro = test_input($_POST["Nro"]);
     $nimi = test_input($_POST["Nimi"]);
 //    $tapahtuma = test_input($_POST["Tapahtuma"]);
-	if (new_number($nro, $file)) { // numeroa ei vielÃ¤ ole csv:ssÃ¤
+	if (new_number($nro, $file)) { // numeroa ei vielä ole csv:ssä
 		$added=addcsv ( $nro, $nimi, $file );
 		if ( $added == FALSE ) {
 			echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	} else {
 ?>
-<H4 style="color:Tomato;">Ehdottamasi numero on jo kÃ¤ytÃ¶ssÃ¤, valitsepa joku muu numero</H4>
+<H4 style="color:Tomato;">Ehdottamasi numero on jo käytössä, valitsepa joku muu numero</H4>
 <?php
 	}
 }
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></tr></thead>
 <tbody>
 <tr><td><input type="number" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value""></td></tr>
-<tr><td colspan="2" style="width:30%"><input type="Submit" value="LisÃ¤Ã¤"></td></t>
+<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td></t>
 </tbody></table>
 </form>
 <div class="separator">Ilmoittautuneet:</div>
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <tr>
 <?php
 $sorted = read_csv($file);
-if ($sorted !== FALSE ) { // Saatiin csv auki, nÃ¤ytetÃ¤Ã¤n ilmoittautuneet
+if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     $line = 0;
     sort($sorted);
     foreach($sorted as $row)
