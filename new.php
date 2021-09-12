@@ -22,13 +22,14 @@ echo "<title>Ilmo " . $tapahtuma . "</title>\n";
 <?php
 require_once("current.php");
 require_once("lib.php"); /* Ainakin test_input ja addcsv */
+echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
 
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nro = test_input($_POST["Nro"]);
     $nimi = test_input($_POST["Nimi"]);
 //    $tapahtuma = test_input($_POST["Tapahtuma"]);
-	if (new_number($nro, $file)) { // numeroa ei vielä ole csv:ssä
+	if (new_number($nro, $file)) { // numeroa ei vielÃ¤ ole csv:ssÃ¤
 		$added=addcsv ( $nro, $nimi, $file );
 		if ( $added == FALSE ) {
 			echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
@@ -36,29 +37,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	} else {
 ?>
-<pre>Ehdottamasi numero on jo käytössä, valitsepa joku muu numero!</pre>
+<H4 style="foreground:red">Ehdottamasi numero on jo kÃ¤ytÃ¶ssÃ¤, valitsepa joku muu numero4>
 <?php
 	}
 }
 
-echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
 ?>
 <form method="POST">
 <table style="border:1px">
 <col style="width:10%"/><col style="width:90%"/> 
 <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></tr></thead>
 <tbody>
-<tr><td style="width:1px"><input type="number" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value""></td></tr>
-<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td></tr>
+<tr><td><input type="number" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value""></td></tr>
+<tr><td colspan="2" style="width:30%"><input type="Submit" value="LisÃ¤Ã¤"></td></t>
 </tbody></table>
-<div class="separator">Ilmoittautuneet:</div>
-<tr><td colspan="2" bgcolor="#b6b6b6" align="center">Ilmoittautuneet:</td></tr>
 </form>
+<div class="separator">Ilmoittautuneet:</div>
 <table>
+<col style="width:10%"/><col style="width:90%"/> 
 <tr>
 <?php
 $sorted = read_csv($file);
-if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
+if ($sorted !== FALSE ) { // Saatiin csv auki, nÃ¤ytetÃ¤Ã¤n ilmoittautuneet
     $line = 0;
     sort($sorted);
     foreach($sorted as $row)
