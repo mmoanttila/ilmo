@@ -13,10 +13,12 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 echo "<title>Ilmo " . $tapahtuma . "</title>\n";
 ?>
 <style> 
-.nro { width: 10%; } 
-.nimi { width: 90%; text-align: left; } 
+.nro { width: 3em; } 
+.nimi { width: 10em; text-align: left; } 
 .center { border: 1px solid black; text-align: center; }
 .separator { border: 1px solid black; text-align: center; background: #b6b6b6; }
+.submit { height: 2em; width: 5em; justify-content: center; align-items: center;}
+.ilmo { border: 1px solid black; }
 </style>
 </head>
 <body>
@@ -44,20 +46,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
+<div>
 <form method="POST">
-<table style="border:1px">
-<thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></tr></thead>
-<tbody>
-<tr><td class="nro"><input type="number" style="width:7em" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value=""></td></tr>
-<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td></tr>
-</tbody></table>
+<div class="nro">Nro: <input type="number" style="width:7em" name="Nro" max="9999" value=""></div>
+<div class="nimi">Nimi: <input type="text" name="Nimi" size="30" value=""></div>
+<br>
+<div class="submit" style="width:30%"><input class="submit" style="width:10em" type="Submit" value="Lisää"></div>
+<br>
 </form>
+</div>
 <div class="separator">Ilmoittautuneet:</div>
-<table style="border:1px">
+<table class="ilmo">
   <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></thead>
   <tbody>
 
-<tr>
 <?php
 $sorted = read_csv($file);
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
@@ -65,6 +67,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     sort($sorted);
     foreach($sorted as $row)
     {
+	echo "<tr>\n";
 	  $index=0;
       foreach($row as $col)
   	  {
