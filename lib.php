@@ -1,5 +1,5 @@
 <?php
-/* vim: set ai sw=2: */
+/* vim: set ai sw=2 fileencoding=utf-8 expandtab*/
 
 function head ($title="karhuenduro.fi") {
   //  print "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\n";
@@ -27,7 +27,8 @@ function test_input($data) {
 function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
   $fd = fopen($file, "a+");
   if ( $fd != FALSE ) {
-    $rvalue = fputcsv($fd, array($nro, $nimi));
+    $tag = "BAD0" . str_pad($nro, 4, "0", STR_PAD_LEFT); 
+    $rvalue = fputcsv($fd, array($nro, $nimi, $tag));
     fclose($fd);
     return $rvalue;
   } else {
