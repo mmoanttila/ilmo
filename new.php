@@ -1,4 +1,5 @@
 <?php
+/* vim: set ai sw=2 fileencoding=utf-8 */
 /*** PREVENT THE PAGE FROM BEING CACHED BY THE WEB BROWSER ***/
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
@@ -37,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	} else {
 ?>
-<H4 style="foreground:red">Ehdottamasi numero on jo kÃ¤ytÃ¶ssÃ¤, valitsepa joku muu numero4>
+<H4 style="color:Tomato;">Ehdottamasi numero on jo kÃ¤ytÃ¶ssÃ¤, valitsepa joku muu numero</H4>
 <?php
 	}
 }
