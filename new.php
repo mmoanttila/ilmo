@@ -2,7 +2,18 @@
 /*** PREVENT THE PAGE FROM BEING CACHED BY THE WEB BROWSER ***/
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
-
+?>
+<!Doctype html>
+<html lang="fi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<?php
+echo "<title>Ilmo " . $tapahtuma . "</title>\n";
+?>
+<style> .short-width td {   width: 10px; } </style>
+</head>
+<body>
+<?php
 require_once("current.php");
 require_once("lib.php"); /* Ainakin test_input ja addcsv */
 
@@ -21,20 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <pre>Ehdottamasi numero on jo käytössä, valitsepa joku muu numero!</pre>
 <?php
-
+	}
 }
-?>
-<!Doctype html>
-<html lang="fi">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<?php
-echo "<title>Ilmo " . $tapahtuma . "</title>\n";
-?>
-<style> .short-width td {   width: 10px; } </style>
-</head>
-<body>
-<?php
+
 echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
 ?>
 <table border="1" style="width:50%">
