@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></tr></thead>
 <tbody>
 <tr><td><input type="number" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value=""></td></tr>
-<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td><r/t>
+<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td></tr>
 </tbody></table>
 </form>
 <div class="separator">Ilmoittautuneet:</div>
