@@ -30,7 +30,7 @@ function authenticate()
       unset($_SESSION["return_to"]);
       header("location: $url");
    else:
-      header("location: /ilmo/index.php");
+      header("location: /ilmo/admin.php");
    endif;
 }
 
