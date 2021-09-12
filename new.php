@@ -11,12 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nro = test_input($_POST["Nro"]);
     $nimi = test_input($_POST["Nimi"]);
 //    $tapahtuma = test_input($_POST["Tapahtuma"]);
-	
-	$added=addcsv ( $nro, $nimi, $file );
-	if ( $added == FALSE ) {
-		echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+	if (new_number($nro, $file)) { // numeroa ei vielä ole csv:ssä
+		$added=addcsv ( $nro, $nimi, $file );
+		if ( $added == FALSE ) {
+			echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+		} else {
+		}
 	} else {
-	}
+?>
+<pre>Ehdottamasi numero on jo käytössä, valitsepa joku muu numero!</pre>
+<?php
 
 }
 ?>

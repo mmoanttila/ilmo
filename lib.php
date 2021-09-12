@@ -35,6 +35,15 @@ function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
   }
 }
 
+function new_number ( $nro, $file="ilmot.csv") {
+  $array = read_csv ( $file );
+  if (in_array($nro,$array)) {
+	return FALSE;
+  } else {
+	return TRUE;
+  }
+}
+
 function save_csv ( $lines, $file="ilmot.csv" ) {
   $fd = fopen($file, "w");
   if ( $fd != FALSE ) {
