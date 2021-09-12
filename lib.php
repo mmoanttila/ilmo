@@ -27,7 +27,7 @@ function test_input($data) {
 function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
   $fd = fopen($file, "a+");
   if ( $fd != FALSE ) {
-    $tag = "BAD0" . str_pad($nro, 4, "0", STR_PAD_LEFT); 
+    $tag = str_pad($nro, 8, "0", STR_PAD_LEFT); 
     $rvalue = fputcsv($fd, array($nro, $nimi, $tag));
     fclose($fd);
     return $rvalue;
