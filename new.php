@@ -13,8 +13,8 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 echo "<title>Ilmo " . $tapahtuma . "</title>\n";
 ?>
 <style> 
-.nro { width: 5; } 
-.nimi { width: 5; text-align: left; } 
+.nro { width: 5px; } 
+.nimi { width: 50px; text-align: left; } 
 .center { border: 1px solid black; text-align: center; }
 .separator { border: 1px solid black; text-align: center; background: #b6b6b6; }
 </style>
@@ -49,13 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <col style="width:10%"/><col style="width:90%"/> 
 <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></tr></thead>
 <tbody>
-<tr><td><input type="number" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value""></td></tr>
-<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td></t>
+<tr><td><input type="number" name="Nro" max="9999" value=""></td><td><input type="text" name="Nimi" size="64" value=""></td></tr>
+<tr><td colspan="2" style="width:30%"><input type="Submit" value="Lisää"></td><r/t>
 </tbody></table>
 </form>
 <div class="separator">Ilmoittautuneet:</div>
-<table>
-<col style="width:10%"/><col style="width:90%"/> 
+<table style="border:1px">
+  <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></thead>
+  <tbody>
+
 <tr>
 <?php
 $sorted = read_csv($file);
