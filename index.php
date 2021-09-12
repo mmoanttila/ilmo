@@ -31,25 +31,29 @@ $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nro = test_input($_POST["Nro"]);
     $nimi = test_input($_POST["Nimi"]);
+	if (is_numeric($nro) and !empty($nimi)) { // Pitää antaa numero ja jotain nimeksi
 //    $tapahtuma = test_input($_POST["Tapahtuma"]);
-	if (new_number($nro, $file)) { // numeroa ei vielä ole csv:ssä
-		$added=addcsv ( $nro, $nimi, $file );
-		if ( $added == FALSE ) {
-			echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+		if (new_number($nro, $file)) { // numeroa ei vielä ole csv:ssä
+			$added=addcsv ( $nro, $nimi, $file );
+			if ( $added == FALSE ) {
+				echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+			} 
 		} else {
-		}
-	} else {
 ?>
 <H4 style="color:Tomato;">Ehdottamasi numero on jo käytössä, valitsepa joku muu numero</H4>
 <?php
-	}
+		}
+	} else {
+?>
+<H4 style="color:Tomato;">Koitapa kirjoittaa jotakin nimeen ja numeroon.</H4>
+<?php
 }
 
 ?>
 <div>
 <form method="POST">
-<div class="nro">Nro: <input type="number" style="width:7em" name="Nro" max="9999" value=""></div>
-<div class="nimi">Nimi: <input type="text" name="Nimi" size="30" value=""></div>
+<div class="nro">Nro: <input type="number" style="width:7em" name="Nro" max="9999" value="" required></div>
+<div class="nimi">Nimi: <input type="text" name="Nimi" size="30" value="" required></div>
 <br>
 <div class="submit" style="width:30%"><input class="submit" style="width:10em" type="Submit" value="Lisää"></div>
 <br>
