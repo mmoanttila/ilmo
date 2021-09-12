@@ -67,14 +67,10 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     sort($sorted);
     foreach($sorted as $row)
     {
-	echo "<tr>\n";
-	  $index=0;
-      foreach($row as $col)
-  	  {
-		echo "<td>" . $col . "</td>";
-        $index++;
-  	  }
-      echo "</tr>\n";
+		echo "<tr>\n";
+		echo "  <td>" . $row[0] . "</td>";
+		echo "  <td>" . $row[1] . "</td>";
+		echo "</tr>\n";
     }
 } // Saatiin luettua csv
 echo "</tbody></table>\n";
