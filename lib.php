@@ -24,13 +24,13 @@ function test_input($data) {
   return $data;
 }
 
-function addcsv ( $nro, $nimi, $file="ilmot.csv", $tag=FALSE) {
+function addcsv ( $nro, $nimi, $file="ilmot.csv", $tag=FALSE, $paikalla=FALSE) {
   $fd = fopen($file, "a+");
   if ( $fd != FALSE ) {
 	if ( $tag == FALSE ) { // Ei annettu parametrinä
 	  $tag = str_pad($nro, 8, "0", STR_PAD_LEFT); 
     } // Muuten laitetaan annettu tagi
-    $rvalue = fputcsv($fd, array($nro, $nimi, $tag));
+    $rvalue = fputcsv($fd, array($nro, $nimi, $tag, $paikalla));
     fclose($fd);
     return $rvalue;
   } else {
@@ -75,6 +75,7 @@ function read_csv ( $file="ilmot.csv" ) {
       $myarray[$line][0] = $row[0];
       $myarray[$line][1] = $row[1];
       $myarray[$line][2] = $row[2];
+      $myarray[$line][3] = $row[3];
       $line++;
     }
 	return $myarray;
