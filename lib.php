@@ -24,10 +24,12 @@ function test_input($data) {
   return $data;
 }
 
-function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
+function addcsv ( $nro, $nimi, $file="ilmot.csv" $tag=FALSE) {
   $fd = fopen($file, "a+");
   if ( $fd != FALSE ) {
-    $tag = str_pad($nro, 8, "0", STR_PAD_LEFT); 
+	if ( $tag == FALSE ) { // Ei annettu parametrinä
+	  $tag = str_pad($nro, 8, "0", STR_PAD_LEFT); 
+    } // Muuten laitetaan annettu tagi
     $rvalue = fputcsv($fd, array($nro, $nimi, $tag));
     fclose($fd);
     return $rvalue;
