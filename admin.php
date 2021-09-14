@@ -18,7 +18,7 @@ require_once("lib.php"); /* Ainakin test_input ja addcsv */
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
 echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
-echo "<H5>" . $tapahtuma . ": </H5>\n";
+echo "<H5>Tapahtuma: </H5><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (is_uploaded_file($_FILES['csv-file']['tmp_name'])) { // Vastaanotettiin CSV-tiedosto
@@ -52,16 +52,14 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     echo "<tr><td class=\"short-width\"><input type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" value=\"\"></td><td colspan=\"3\" class=\"tagi\"></tr>\n";
     echo "<tr><td colspan=\"4\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
     echo "</form>";
-    echo "<tr>";
     sort($sorted);
     foreach($sorted as $row)
         {
-        $index=0;
-        foreach($row as $col)
-  	    {
-                echo "<td><input name='var".$index."' type='text' value='".$col."'></td>";
-    	        $index++;
-  	    }
+		echo "<tr>";
+		echo "  <td class=\"nro\"><input type=\"number\" style=\"width:7em\" name=\"Nro\" value=\"" . $row[0] . "\"/></td>\n";
+		echo "  <td class=\"nimi\"><input type=\"text\" size=\"30\" name=\"Nimi\" value=\"" . $row[1] . "\"/></td>\n";
+		echo "  <td class=\"tagi\"><input type=\"text\" size=\"8\" name=\"Tagi\" value=\"" . $row[2] . "\"/></td>\n";
+		echo "  <td class=\"paikalla\"><input type=\"checkbox\" name=\"Paikalla\" value=\"" . $row[3] . "\"/></td>\n";
         echo "</tr>\n";
         }
     echo "</tbody></table>\n";
