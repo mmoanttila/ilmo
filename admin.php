@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nro = test_input($_POST["Nro"]);
     $nimi = test_input($_POST["Nimi"]);
 	
-	$added=addcsv ( $nro, $nimi, $tapahtuma . ".csv" );
+	$added=addcsv ( $nro, $nimi, $file );
 	if ( $added == FALSE ) {
 		echo "<pre>Tiedoston " . $tapahtuma . ".csv kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
 	} else {
@@ -24,21 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-/*** RETRIEVE LOGGED IN USER INFORMATION ***/
-$user = wp_get_current_user();
+$sorted = read_csv($file);
+if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
-// if (($open = fopen($tapahtuma . ".csv", "r")) !== FALSE) 
-if (($open = fopen($file, "r")) !== FALSE) 
-{
-	while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
-    {        
-      $array[] = $data; 
-	}
-    fclose($open);
-}
     echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
 	echo "<H5>" . $tapahtuma . ": </H5>\n";
-    $sorted = read_csv($file);
     $line = 0;
     echo "<style> .short-width td {   width: 10%; } </style>";
     echo "<table style=\"width:50%\">\n";
