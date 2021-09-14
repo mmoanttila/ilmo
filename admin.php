@@ -10,7 +10,12 @@ login();
 
 require_once("current.php");
 require_once("lib.php"); /* Ainakin test_input ja addcsv */
-
+?>
+<!Doctype html>
+<html lang="fi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<?php
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nro = test_input($_POST["Nro"]);
@@ -58,3 +63,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     //To display array data
     print_r($sorted);
     echo "</pre>";
+}
+?>
+</body>
+</html>
