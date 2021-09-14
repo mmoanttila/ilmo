@@ -71,9 +71,10 @@ function read_csv ( $file="ilmot.csv" ) {
 	//  $myarray[$row[0]] = "$row[1]";
 	$line = 0;
     foreach($array as $row)
-    {
+    { // luetaan vain kolme ekaa saraketta: nro, nimi ja tagi
       $myarray[$line][0] = $row[0];
       $myarray[$line][1] = $row[1];
+      $myarray[$line][2] = $row[2];
       $line++;
     }
 	return $myarray;
