@@ -36,9 +36,9 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 	echo "<H5>" . $tapahtuma . ": </H5>\n";
     $line = 0;
     echo "<style> .short-width td {   width: 10%; } </style>";
-    echo "<table style=\"width:50%\">\n";
-	echo "  <col style=\"width:10%\"/><col style=\"width:90%\"/>\n";
-    echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th></tr></thead>\n";
+    echo "<table>\n";
+	echo "  <col style=\"width:5%\"/><col style=\"width:80%\"/><col style=\"width:15%\"/>\n";
+    echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th><th class=\"tagi\">Tagi:</th></tr></thead>\n";
 	echo "  <tbody>\n";
     echo "<form method=\"POST\">";
     echo "<tr><td class=\"short-width\"><input type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" value\"\"></td></tr>\n";
