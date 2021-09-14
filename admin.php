@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $sorted = read_csv($file);
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
-    $line = 0;
     echo "<style> .short-width td {   width: 10%; } </style>";
     echo "<table style=\"border:1px\">\n";
 	echo "  <col style=\"width:5%\"/><col style=\"width:75%\"/><col style=\"width:15%\"/><col style=\"width:5%\">\n";
@@ -51,16 +50,21 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     echo "<form method=\"POST\">";
     echo "<tr><td class=\"short-width\"><input type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" value=\"\"></td><td colspan=\"3\" class=\"tagi\"></tr>\n";
     echo "<tr><td colspan=\"4\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
-    echo "</form>";
+    echo "</form>\n";
     sort($sorted);
+
+    $line = 0;
     foreach($sorted as $row)
         {
 		echo "<tr>";
+		echo "  <form action=\"$SCRIPT_NAME?edit=1\" method=\"GET\"><input type=\"hidden\" name=\"rivi\" value=\"$line\"/>";
 		echo "  <td class=\"nro\"><input type=\"number\" style=\"width:7em\" name=\"Nro\" value=\"" . $row[0] . "\"/></td>\n";
 		echo "  <td class=\"nimi\"><input type=\"text\" size=\"30\" name=\"Nimi\" value=\"" . $row[1] . "\"/></td>\n";
 		echo "  <td class=\"tagi\"><input type=\"text\" size=\"8\" name=\"Tagi\" value=\"" . $row[2] . "\"/></td>\n";
 		echo "  <td class=\"paikalla\"><input type=\"checkbox\" name=\"Paikalla\" value=\"" . $row[3] . "\"/></td>\n";
+		echo "  </form>\n";
         echo "</tr>\n";
+		$line++;
         }
     echo "</tbody></table>\n";
     echo "<br><hr>\n";
