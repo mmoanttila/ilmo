@@ -18,7 +18,7 @@ require_once("lib.php"); /* Ainakin test_input ja addcsv */
 <?php
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if (is_uploaded_file($_FILES['userfile']['tmp_name']) { // Vastaanotettiin CSV-tiedosto
+	if (is_uploaded_file($_FILES['userfile']['tmp_name'])) { // Vastaanotettiin CSV-tiedosto
 		if (file_exists($file)) { // varmuuskopio vanhasta jos sellainen on
 			rename ($file, $file . ".bak");
 		}
