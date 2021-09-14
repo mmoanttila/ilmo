@@ -1,4 +1,5 @@
 <?php
+/* vim: set ai sw=2 fileencoding=utf-8 expandtab */
 /*** PREVENT THE PAGE FROM BEING CACHED BY THE WEB BROWSER ***/
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
@@ -16,21 +17,24 @@ require_once("lib.php"); /* Ainakin test_input ja addcsv */
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
+echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
+echo "<H5>" . $tapahtuma . ": </H5>\n";
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if (is_uploaded_file($_FILES['userfile']['tmp_name'])) { // Vastaanotettiin CSV-tiedosto
+	if (is_uploaded_file($_FILES['csv-file']['tmp_name'])) { // Vastaanotettiin CSV-tiedosto
 		if (file_exists($file)) { // varmuuskopio vanhasta jos sellainen on
 			rename ($file, $file . ".bak");
 		}
-		move_uploaded_file($_FILES['userfile']['tmp_name'], $file);
+		move_uploaded_file($_FILES['csv-file']['tmp_name'], $file);
 	}
-    $nro = test_input($_POST["Nro"]);
-    $nimi = test_input($_POST["Nimi"]);
+	if (is_numeric($nro) and !empty($nimi)) { // Pitää antaa numero ja jotain nimeksi
+		$nro = test_input($_POST["Nro"]);
+		$nimi = test_input($_POST["Nimi"]);
 	
-	$added=addcsv ( $nro, $nimi, $file );
-	if ( $added == FALSE ) {
-		echo "<pre>Tiedoston " . $tapahtuma . ".csv kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
-	} else {
+		$added=addcsv ( $nro, $nimi, $file );
+		if ( $added == FALSE ) {
+			echo "<pre>Tiedoston " . $tapahtuma . ".csv kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+		}
 	}
 
 }
@@ -38,8 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $sorted = read_csv($file);
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
-    echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
-	echo "<H5>" . $tapahtuma . ": </H5>\n";
     $line = 0;
     echo "<style> .short-width td {   width: 10%; } </style>";
     echo "<table style=\"border:1px\">\n";
@@ -68,7 +70,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 ?>
 <form action="" method="post" enctype="multipart/form-data">
 <p>Upload edited CSV-file:
-<input type="file" name="cvs-file" />
+<input type="file" name="csv-file" />
 <input type="submit" value="Lähetä" />
 </p>
 </form>
