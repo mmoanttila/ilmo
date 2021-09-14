@@ -18,6 +18,12 @@ require_once("lib.php"); /* Ainakin test_input ja addcsv */
 <?php
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if (is_uploaded_file($_FILES['userfile']['tmp_name']) { // Vastaanotettiin CSV-tiedosto
+		if (file_exists($file)) { // varmuuskopio vanhasta jos sellainen on
+			rename ($file, $file . ".bak");
+		}
+		move_uploaded_file($_FILES['userfile']['tmp_name'], $file);
+	}
     $nro = test_input($_POST["Nro"]);
     $nimi = test_input($_POST["Nimi"]);
 	
@@ -58,10 +64,19 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
         }
     echo "</tbody></table>\n";
     echo "<br><hr>\n";
+	echo "<P>Lataa ilmoittautuneet CSV-tiedostona <a href=\"$file\">tästä</a>.\n";
+?>
+<form action="" method="post" enctype="multipart/form-data">
+<p>Upload edited CSV-file:
+<input type="file" name="cvs-file" />
+<input type="submit" value="Lähetä" />
+</p>
+</form>
+<?php
     echo "<pre>";
 	save_json (json_encode($sorted, JSON_PRETTY_PRINT));
-    //To display array data
-    print_r($sorted);
+    // To display array data
+    // print_r($sorted);
     echo "</pre>";
 }
 ?>
