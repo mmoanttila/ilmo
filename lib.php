@@ -24,7 +24,7 @@ function test_input($data) {
   return $data;
 }
 
-function addcsv ( $nro, $nimi, $file="ilmot.csv" $tag=FALSE) {
+function addcsv ( $nro, $nimi, $file="ilmot.csv", $tag=FALSE) {
   $fd = fopen($file, "a+");
   if ( $fd != FALSE ) {
 	if ( $tag == FALSE ) { // Ei annettu parametrinä
