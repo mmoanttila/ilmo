@@ -10,6 +10,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <?php
+require_once("current.php");
 echo "<title>Ilmo " . $tapahtuma . "</title>\n";
 ?>
 <style> 
