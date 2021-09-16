@@ -55,6 +55,8 @@ function save_csv ( $lines, $file="ilmot.csv" ) {
 		  fputcsv ($fd, $row);
 	  }
 	  fclose($fd);
+  } else {
+      echo "<pre>Enpä saanut " . $file . ":ä auki!! </pre>\n";
   }
 }
 
