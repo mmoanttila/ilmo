@@ -27,7 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		move_uploaded_file($_FILES['csv-file']['tmp_name'], $file);
 	}
-	if (is_numeric($nro) and !empty($nimi)) { // Pitää antaa numero ja jotain nimeksi
+	if ( !empty($GET["edit"]) { // Yritetään korjata yhtä riviä
+		$rivi = test_input($_GET["rivi"]);
+		$nro = test_input($_GET["Nro"]);
+		$nimi = test_input($_GET["Nimi"]);
+		$tagi = test_input($_GET["Tagi"]);
+		$paikalla = test_input($_GET["Paikalla"]);
+		echo "<pre> Nyt pitäis muuttaa riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," $paikalla . "</pre>\n";
+
+	}
+
+	if ( is_numeric($nro) and !empty($nimi) and !empty($GET["add") ) { // Pitää antaa numero ja jotain nimeksi
 		$nro = test_input($_POST["Nro"]);
 		$nimi = test_input($_POST["Nimi"]);
 	
@@ -44,7 +54,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
     echo "<style> .short-width td {   width: 10%; } </style>";
     echo "<table style=\"border:1px\">\n";
-	echo "  <col style=\"width:5%\"/><col style=\"width:75%\"/><col style=\"width:15%\"/><col style=\"width:5%\">\n";
+//	echo "  <col style=\"width:5%\"/><col style=\"width:75%\"/><col style=\"width:15%\"/><col style=\"width:5%\">\n";
     echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th><th class=\"tagi\">Tagi:</th><th>Paikalla</th></tr></thead>\n";
 	echo "  <tbody>\n";
     echo "<form method=\"POST\">";
