@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$sorted = read_csv($file);
 		if ($sorted !== FALSE ) { // Saatiin csv auki
 			echo "<pre>" . $sorted[$rivi] . "</pre>\n";
-			$sorted[$rivi] = $nro . "," . $nimi . "," . $tagi . "," . $paikalla;
+			$sorted[$rivi] = array( "0"=>$nro, "1"=>$nimi, "2"=>$tagi, "3"=>$paikalla );
 		    echo "<pre> => " . $sorted[$rivi] . "</pre>\n";
 			save_csv($sorted, $file);
 		}
