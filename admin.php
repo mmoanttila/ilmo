@@ -66,12 +66,12 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     foreach($sorted as $row)
         {
 		echo "<tr>\n";
-		echo "  <form action=\"$SCRIPT_NAME?edit=1\" method=\"GET\"><input type=\"hidden\" name=\"rivi\" value=\"$line\"/>";
+		echo "  <form action=\"$SCRIPT_NAME\" method=\"GET\"><input type=\"hidden\" name=\"edit\" value=\"1\"><input type=\"hidden\" name=\"rivi\" value=\"$line\"/>";
 		echo "  <td class=\"nro\"><input type=\"number\" style=\"width:7em\" name=\"Nro\" value=\"" . $row[0] . "\"/></td>\n";
 		echo "  <td class=\"nimi\"><input type=\"text\" size=\"30\" name=\"Nimi\" value=\"" . $row[1] . "\"/></td>\n";
 		echo "  <td class=\"tagi\"><input type=\"text\" size=\"8\" name=\"Tagi\" value=\"" . $row[2] . "\"/></td>\n";
 		echo "  <td class=\"paikalla\"><input type=\"checkbox\" name=\"Paikalla\" value=\"" . $row[3] . "\"/></td>\n";
-		echo "  <td class=\"submit\"><input type=\"submit\" name=\"Tallenna\" value=\"Muuta\"/></td>\n";
+		echo "  <td class=\"submit\"><input type=\"submit\" value=\"Muuta\"/></td>\n";
 		echo "  </form>\n";
         echo "</tr>\n";
 		$line++;
