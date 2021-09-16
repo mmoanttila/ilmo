@@ -37,11 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		sort($sorted);
 		if ($sorted !== FALSE ) { // Saatiin csv auki
 			echo "<pre>";
-			print_r ($sorted[$rivi+1]);
+			print_r ($sorted[$rivi]);
 			echo "</pre>\n";
-			$sorted[$rivi+1] = array( "0"=>$nro, "1"=>$nimi, "2"=>$tagi, "3"=>$paikalla );
+			$sorted[$rivi] = array( "0"=>$nro, "1"=>$nimi, "2"=>$tagi, "3"=>$paikalla );
 			echo "<pre> => ";
-			print_r ($sorted[$rivi+1]);
+			print_r ($sorted[$rivi]);
 			echo "</pre>\n";
 			save_csv($sorted, $file);
 		}
