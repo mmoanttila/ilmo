@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$tagi = test_input($_POST["Tagi"]);
 		$paikalla = test_input($_POST["Paikalla"]);
 		$sorted = read_csv($file);
+		sort($sorted);
 		if ($sorted !== FALSE ) { // Saatiin csv auki
 			echo "<pre>";
 			print_r ($sorted[$rivi+1]);
