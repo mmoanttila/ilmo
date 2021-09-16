@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "<pre> Nyt pitäis muuttaa riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," . $paikalla . "</pre>\n";
 	}
 
-	if ( is_numeric($nro) and !empty($nimi) and !empty($GET["add") ) { // Pitää antaa numero ja jotain nimeksi
+	if ( is_numeric($nro) and !empty($nimi) and !empty($GET["add"] ) ) { // Pitää antaa numero ja jotain nimeksi
 		$nro = test_input($_POST["Nro"]);
 		$nimi = test_input($_POST["Nimi"]);
 	
