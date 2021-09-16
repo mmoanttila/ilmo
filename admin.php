@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-if (sizeof($sorted)) == "0" { // Käytetäänkö jo edellä luettua&editoitua taulukkoa
+if (sizeof($sorted) == "0" ) { // Käytetäänkö jo edellä luettua&editoitua taulukkoa
 	$sorted = read_csv($file);
 }
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
