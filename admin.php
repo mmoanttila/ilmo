@@ -27,14 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		move_uploaded_file($_FILES['csv-file']['tmp_name'], $file);
 	}
-	if ( !empty($GET["edit"]) { // Yritetään korjata yhtä riviä
+	if ( !empty($GET["edit"]) ) { // Yritetään korjata yhtä riviä
 		$rivi = test_input($_GET["rivi"]);
 		$nro = test_input($_GET["Nro"]);
 		$nimi = test_input($_GET["Nimi"]);
 		$tagi = test_input($_GET["Tagi"]);
 		$paikalla = test_input($_GET["Paikalla"]);
 		echo "<pre> Nyt pitäis muuttaa riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," $paikalla . "</pre>\n";
-
 	}
 
 	if ( is_numeric($nro) and !empty($nimi) and !empty($GET["add") ) { // Pitää antaa numero ja jotain nimeksi
