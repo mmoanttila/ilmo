@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		move_uploaded_file($_FILES['csv-file']['tmp_name'], $file);
 	}
-	if ( $POST["edit"] == "1" ) { // Yritetään korjata yhtä riviä
+	if ( $_POST["edit"] == "1" ) { // Yritetään korjata yhtä riviä
 		$rivi = test_input($_POST["rivi"]);
 		$nro = test_input($_POST["Nro"]);
 		$nimi = test_input($_POST["Nimi"]);
