@@ -34,6 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$tagi = test_input($_POST["Tagi"]);
 		$paikalla = test_input($_POST["Paikalla"]);
 		echo "<pre> Nyt pitäis muuttaa riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," . $paikalla . "</pre>\n";
+		$sorted = read_csv($file);
+		if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
+			$sorted[$rivi] = $nro . "," . $nimi . "," . $tagi . "," . $paikalla;
+			save_csv ($sorted, $file);
+		}
+
 	}
 
 	// Täähän ei voi toimia, kun ei noita muuttujia ole vielä luettu POST:sta
@@ -49,7 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-$sorted = read_csv($file);
+if (sizeof($sorted)) = "0" { // Käytetäänkö jo edellä luettua&editoitua taulukkoa
+	$sorted = read_csv($file);
+}
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
     echo "<style> .short-width td {   width: 10%; } </style>";
