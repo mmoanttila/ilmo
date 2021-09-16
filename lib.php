@@ -24,11 +24,13 @@ function test_input($data) {
   return $data;
 }
 
-function addcsv ( $nro, $nimi, $file="ilmot.csv" ) {
+function addcsv ( $nro, $nimi, $file="ilmot.csv", $tag=FALSE, $paikalla=FALSE) {
   $fd = fopen($file, "a+");
   if ( $fd != FALSE ) {
-    $tag = str_pad($nro, 8, "0", STR_PAD_LEFT); 
-    $rvalue = fputcsv($fd, array($nro, $nimi, $tag));
+	if ( $tag == FALSE ) { // Ei annettu parametrinä
+	  $tag = str_pad($nro, 8, "0", STR_PAD_LEFT); 
+    } // Muuten laitetaan annettu tagi
+    $rvalue = fputcsv($fd, array($nro, $nimi, $tag, $paikalla));
     fclose($fd);
     return $rvalue;
   } else {
@@ -53,6 +55,8 @@ function save_csv ( $lines, $file="ilmot.csv" ) {
 		  fputcsv ($fd, $row);
 	  }
 	  fclose($fd);
+  } else {
+      echo "<pre>Enpä saanut " . $file . ":ä auki!! </pre>\n";
   }
 }
 
@@ -69,9 +73,11 @@ function read_csv ( $file="ilmot.csv" ) {
 	//  $myarray[$row[0]] = "$row[1]";
 	$line = 0;
     foreach($array as $row)
-    {
+    { // luetaan vain kolme ekaa saraketta: nro, nimi ja tagi
       $myarray[$line][0] = $row[0];
       $myarray[$line][1] = $row[1];
+      $myarray[$line][2] = $row[2];
+      $myarray[$line][3] = $row[3];
       $line++;
     }
 	return $myarray;
