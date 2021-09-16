@@ -27,15 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		move_uploaded_file($_FILES['csv-file']['tmp_name'], $file);
 	}
-	if ( !empty($GET["edit"]) ) { // Yritetään korjata yhtä riviä
-		$rivi = test_input($_GET["rivi"]);
-		$nro = test_input($_GET["Nro"]);
-		$nimi = test_input($_GET["Nimi"]);
-		$tagi = test_input($_GET["Tagi"]);
-		$paikalla = test_input($_GET["Paikalla"]);
+	if ( $POST["edit"] == "1" ) { // Yritetään korjata yhtä riviä
+		$rivi = test_input($_POST["rivi"]);
+		$nro = test_input($_POST["Nro"]);
+		$nimi = test_input($_POST["Nimi"]);
+		$tagi = test_input($_POST["Tagi"]);
+		$paikalla = test_input($_POST["Paikalla"]);
 		echo "<pre> Nyt pitäis muuttaa riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," . $paikalla . "</pre>\n";
 	}
 
+	// Täähän ei voi toimia, kun ei noita muuttujia ole vielä luettu POST:sta
 	if ( is_numeric($nro) and !empty($nimi) and !empty($GET["add"] ) ) { // Pitää antaa numero ja jotain nimeksi
 		$nro = test_input($_POST["Nro"]);
 		$nimi = test_input($_POST["Nimi"]);
@@ -66,7 +67,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     foreach($sorted as $row)
         {
 		echo "<tr>\n";
-		echo "  <form action=\"$SCRIPT_NAME\" method=\"GET\"><input type=\"hidden\" name=\"edit\" value=\"1\"><input type=\"hidden\" name=\"rivi\" value=\"$line\"/>";
+		echo "  <form action=\"$SCRIPT_NAME\" method=\"POST\"><input type=\"hidden\" name=\"edit\" value=\"1\"><input type=\"hidden\" name=\"rivi\" value=\"$line\"/>";
 		echo "  <td class=\"nro\"><input type=\"number\" style=\"width:7em\" name=\"Nro\" value=\"" . $row[0] . "\"/></td>\n";
 		echo "  <td class=\"nimi\"><input type=\"text\" size=\"30\" name=\"Nimi\" value=\"" . $row[1] . "\"/></td>\n";
 		echo "  <td class=\"tagi\"><input type=\"text\" size=\"8\" name=\"Tagi\" value=\"" . $row[2] . "\"/></td>\n";
