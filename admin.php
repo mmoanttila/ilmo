@@ -86,7 +86,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 		echo "  <td class=\"nimi\"><input type=\"text\" size=\"30\" name=\"Nimi\" value=\"" . $row[1] . "\"/></td>\n";
 		echo "  <td class=\"tagi\"><input type=\"text\" size=\"8\" name=\"Tagi\" value=\"" . $row[2] . "\"/></td>\n";
 		echo "  <td class=\"paikalla\"><input type=\"checkbox\" name=\"Paikalla\" value=\"1\"";
-		if ($paikalla=="1") { echo " checked "; }
+		if ($row[3]=="1") { echo " checked "; }
 		echo "/></td>\n";
 		echo "  <td class=\"submit\"><input type=\"submit\" value=\"Muuta\"/></td>\n";
 		echo "  </form>\n";
