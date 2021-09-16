@@ -35,8 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$paikalla = test_input($_POST["Paikalla"]);
 		$sorted = read_csv($file);
 		if ($sorted !== FALSE ) { // Saatiin csv auki
+			echo "<pre>" . $sorted[$rivi] . "</pre>\n";
 			$sorted[$rivi] = $nro . "," . $nimi . "," . $tagi . "," . $paikalla;
-		    echo "<pre> Nyt pitäis muuttaa " . $file . ":n riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," . $paikalla . "</pre>\n";
+		    echo "<pre> => " . $sorted[$rivi] . "</pre>\n";
 			save_csv($sorted, $file);
 		}
 
