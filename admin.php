@@ -33,17 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$nimi = test_input($_POST["Nimi"]);
 		$tagi = test_input($_POST["Tagi"]);
 		$paikalla = test_input($_POST["Paikalla"]);
-		echo "<pre> Nyt pitäis muuttaa riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," . $paikalla . "</pre>\n";
 		$sorted = read_csv($file);
-		if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
+		if ($sorted !== FALSE ) { // Saatiin csv auki
 			$sorted[$rivi] = $nro . "," . $nimi . "," . $tagi . "," . $paikalla;
-			save_csv ($sorted, $file);
+		    echo "<pre> Nyt pitäis muuttaa " . $file . ":n riviä  " . $rivi . ": " . $nro . "," . $nimi . "," . $tagi . "," . $paikalla . "</pre>\n";
+			save_csv($sorted, $file);
 		}
 
 	}
 
 	// Täähän ei voi toimia, kun ei noita muuttujia ole vielä luettu POST:sta
-	if ( is_numeric($nro) and !empty($nimi) and !empty($GET["add"] ) ) { // Pitää antaa numero ja jotain nimeksi
+	if ( is_numeric($nro) and !empty($nimi) and !empty($_POST["add"] ) ) { // Pitää antaa numero ja jotain nimeksi
 		$nro = test_input($_POST["Nro"]);
 		$nimi = test_input($_POST["Nimi"]);
 	
