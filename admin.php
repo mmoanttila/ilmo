@@ -89,7 +89,8 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 </form>
 <?php
     echo "<pre>";
-	save_json (json_encode($sorted, JSON_PRETTY_PRINT));
+	// save_json (json_encode($sorted, JSON_PRETTY_PRINT));
+	save_csv ( $sorted );
     // To display array data
     // print_r($sorted);
     echo "</pre>";
