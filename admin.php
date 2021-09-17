@@ -69,11 +69,11 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     echo "<style> .short-width td {   width: 5em; } </style>";
     echo "<table border=\"1px\">\n";
 //	echo "  <col style=\"width:5%\"/><col style=\"width:75%\"/><col style=\"width:15%\"/><col style=\"width:5%\">\n";
-    echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th><th class=\"tagi\">Tagi:</th><th>Paikalla</th></tr></thead>\n";
+    echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th><th class=\"tagi\">Tagi:</th><th colspan=\"3\">Paikalla</th></tr></thead>\n";
 	echo "  <tbody>\n";
     echo "<form method=\"POST\">";
-    echo "<tr><td><input style=\"width:4em\" type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" size=\"24\" value=\"\"></td><td colspan=\"3\" class=\"tagi\"></tr>\n";
-    echo "<tr><td colspan=\"4\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
+    echo "<tr><td><input style=\"width:4em\" type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" size=\"24\" value=\"\"></td><td colspan=\"4\" class=\"tagi\"></tr>\n";
+    echo "<tr><td colspan=\"6\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
     echo "</form>\n";
     sort($sorted);
 
@@ -88,7 +88,8 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 		echo "  <td class=\"paikalla\"><input type=\"checkbox\" name=\"Paikalla\" value=\"1\"";
 		if ($row[3]=="1") { $paikalla++; echo " checked "; }
 		echo "/></td>\n";
-		echo "  <td class=\"submit\"><input type=\"submit\" value=\"Muuta\"/></td>\n";
+		echo "  <td class=\"submit\"><input type=\"submit\" name=\"mode\" value=\"Muuta\"/></td>\n";
+		echo "  <td class=\"submit\"><input type=\"submit\" name=\"mode\" value=\"Poista\"/></td>\n";
 		echo "  </form>\n";
         echo "</tr>\n";
 		$line++;
