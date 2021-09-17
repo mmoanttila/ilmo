@@ -67,7 +67,7 @@ if (sizeof($sorted) == "0" ) { // Käytetäänkö jo edellä luettua&editoitua t
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
     echo "<style> .short-width td {   width: 5em; } </style>";
-    echo "<table style=\"border:1px\">\n";
+    echo "<table border=\"1px\">\n";
 //	echo "  <col style=\"width:5%\"/><col style=\"width:75%\"/><col style=\"width:15%\"/><col style=\"width:5%\">\n";
     echo "  <thead><tr><th class=\"short-width\">Nro:</th><th>Nimi:</th><th class=\"tagi\">Tagi:</th><th>Paikalla</th></tr></thead>\n";
 	echo "  <tbody>\n";
