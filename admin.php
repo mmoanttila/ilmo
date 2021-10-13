@@ -74,7 +74,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (sizeof($sorted) == "0" ) { // Käytetäänkö jo edellä luettua&editoitua taulukkoa
 	$sorted = read_csv($file);
 }
-if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 
     echo "<style> .short-width td {   width: 5em; } </style>";
     echo "<table border=\"1px\">\n";
@@ -85,6 +84,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     echo "<tr><td><input style=\"width:4em\" type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" size=\"24\" value=\"\"></td><td colspan=\"4\" class=\"tagi\"></tr>\n";
     echo "<tr><td colspan=\"6\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
     echo "</form>\n";
+if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     sort($sorted);
 
     $line = $paikalla = 0;
