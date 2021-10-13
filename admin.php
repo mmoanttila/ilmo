@@ -52,7 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	}
 	if ( $_POST["new"] == "1" ) { // Lisätään uusi tapahtuma
-
+		$tapahtuma = test_input($_POST["tapahtuma"]);
+		$pvm = test_input($_POST["pvm"]);
+		$current = array('tapahtuma' => $tapahtuma, 'pvm' => $pvm);
+		save_json (json_encode($current), "current.json");
 	}
 
 	// Täähän ei voi toimia, kun ei noita muuttujia ole vielä luettu POST:sta
