@@ -1,5 +1,6 @@
 <?php
-$tapahtuma = "Järilänvuoren sprintti 18.9.";
+$tapahtuma = "Järilänvuoren sprintti";
+$pvm = "2021-09-18";
 $file = "ilmot/jarilan-sprint.csv";
 
 ?>
