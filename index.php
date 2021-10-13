@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <div>
 <form method="POST">
-<div class="nro">Nro: <input type="number" style="width:7em" name="Nro" max="9999" value="" required></div>
-<div class="nimi">Nimi: <input type="text" name="Nimi" size="30" value="" required></div>
+<div class="nro"><label for="nro">Nro: </label><input id="nro" type="number" style="width:7em" name="Nro" max="9999" value="" required></div>
+<div class="nimi"><label for="nimi">Nimi: </label><input id="nimi" type="text" name="Nimi" size="30" value="" required></div>
 <br>
 <div class="submit" style="width:30%"><input class="submit" style="width:10em" type="Submit" value="Lisää"></div>
 <br>
