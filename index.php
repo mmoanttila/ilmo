@@ -11,7 +11,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <?php
 require_once("current.php");
-echo "<title>Ilmo " . $tapahtuma . "</title>\n";
+echo "<title>Ilmo " . $tapahtuma . " " . $pvm ."</title>\n";
 ?>
 <style> 
 .nro { width: 3em; } 
@@ -26,7 +26,7 @@ echo "<title>Ilmo " . $tapahtuma . "</title>\n";
 <?php
 require_once("current.php");
 require_once("lib.php"); /* Ainakin test_input ja addcsv */
-echo "<H2>" . $tapahtuma . " ilmoittautuminen</H2>\n";
+echo "<H2>" . $tapahtuma . " " . $pvm . " ilmoittautuminen</H2>\n";
 
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
