@@ -83,17 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		save_json (json_encode($current), "current.json");
 	}
 
-	// Täähän ei voi toimia, kun ei noita muuttujia ole vielä luettu POST:sta
-	if ( is_numeric($nro) and !empty($nimi) and !empty($_POST["add"] ) ) { // Pitää antaa numero ja jotain nimeksi
-		$nro = test_input($_POST["Nro"]);
-		$nimi = test_input($_POST["Nimi"]);
-	
-		$added=addcsv ( $nro, $nimi, $file );
-		if ( $added == FALSE ) {
-			echo "<pre>Tiedoston " . $tapahtuma . ".csv kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
-		}
-	}
-
 }
 
 if (sizeof($sorted) == "0" ) { // Käytetäänkö jo edellä luettua&editoitua taulukkoa
