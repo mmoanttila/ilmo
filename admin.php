@@ -37,13 +37,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$nimi = test_input($_POST["Nimi"]);
 		$tagi = test_input($_POST["Tagi"]);
 		$paikalla = test_input($_POST["Paikalla"]);
+		$mode = test_input($_POST["mode"]);
 		$sorted = read_csv($file);
 		sort($sorted);
 		if ($sorted !== FALSE ) { // Saatiin csv auki
 			/* echo "<pre>";
 			print_r ($sorted[$rivi]);
 			echo "</pre>\n"; */
-			$sorted[$rivi] = array( "0"=>$nro, "1"=>$nimi, "2"=>$tagi, "3"=>$paikalla );
+			if ($mode == "Muuta" ) {
+				$sorted[$rivi] = array( "0"=>$nro, "1"=>$nimi, "2"=>$tagi, "3"=>$paikalla );
+			} else {
+				unset ($sorted[$rivi]);
+			}
 			/* echo "<pre> => ";
 			print_r ($sorted[$rivi]);
 			echo "</pre>\n"; */
