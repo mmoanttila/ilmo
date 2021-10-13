@@ -20,8 +20,8 @@ require_once("lib.php"); /* Ainakin test_input ja addcsv */
 echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
 echo "<form method=\"post\">\n";
 echo "<input type=\"hidden\" name=\"new\" value=\"1\">\n";
-echo "<H5>Tapahtuma: </H5><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
-echo "<H5>PVM: </H5><input type=\"text\" size=\"10\" name=\"pvm\" value=\"" . $pvm . "\"></input>\n";
+echo "<B>Tapahtuma: </B><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
+echo "<B>PVM: </B><input type=\"text\" size=\"10\" name=\"pvm\" value=\"" . $pvm . "\"></input>\n";
 echo "</form>\n";
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
