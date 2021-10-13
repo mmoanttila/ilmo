@@ -22,7 +22,7 @@ echo "<form method=\"post\">\n";
 echo "<input type=\"hidden\" name=\"new\" value=\"1\">\n";
 echo "<B>Tapahtuma: </B><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
 echo "<B>PVM: </B><input type=\"text\" size=\"10\" name=\"pvm\" value=\"" . $pvm . "\"></input>\n";
-echo "</form>\n";
+echo "</form><br>\n";
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (is_uploaded_file($_FILES['csv-file']['tmp_name'])) { // Vastaanotettiin CSV-tiedosto
