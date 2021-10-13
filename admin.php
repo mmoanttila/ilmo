@@ -51,6 +51,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 
 	}
+	if ( $_POST["add"] == "1" ) { // Lisätään uusi kilpailija
+	    $nro = test_input($_POST["Nro"]);
+	    $nimi = test_input($_POST["Nimi"]);
+		if (is_numeric($nro) and !empty($nimi)) { // Pitää antaa numero ja jotain nimeksi
+			if (new_number($nro, $file)) { // numeroa ei vielä ole csv:ssä
+				$added=addcsv ( $nro, $nimi, $file );
+				if ( $added == FALSE ) {
+					echo "<pre>Tiedoston " . $file . " kirjoitus ei onnistunut (" . $nro . "," . $nimi . ")!!</pre>\n";
+				} 
+			} else {
+?>
+<H4 style="color:Tomato;">Ehdottamasi numero on jo käytössä, valitsepa joku muu numero</H4>
+<?php
+			}
+		} else {
+?>
+<H4 style="color:Tomato;">Koitapa kirjoittaa jotakin nimeen ja numeroon.</H4>
+<?php
+		}
+	}
 	if ( $_POST["new"] == "1" ) { // Lisätään uusi tapahtuma
 		$tapahtuma = test_input($_POST["tapahtuma"]);
 		$pvm = test_input($_POST["pvm"]);
@@ -82,7 +102,7 @@ if (sizeof($sorted) == "0" ) { // Käytetäänkö jo edellä luettua&editoitua t
 	echo "  <tbody>\n";
     echo "<form method=\"POST\">";
     echo "<tr><td><input style=\"width:4em\" type=\"number\" name=\"Nro\" value=\"\"></td><td><input type=\"text\" name=\"Nimi\" size=\"24\" value=\"\"></td><td colspan=\"4\" class=\"tagi\"></tr>\n";
-    echo "<tr><td colspan=\"6\"><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
+    echo "<tr><td colspan=\"6\"><input type=\"hidden\" name=\"add\" value=\"1\"/><input type=\"Submit\" value=\"Lisää\"></td></tr>\n";
     echo "</form>\n";
 if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
     sort($sorted);
@@ -118,7 +138,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 <?php
     echo "<pre>";
 	// save_json (json_encode($sorted, JSON_PRETTY_PRINT));
-	save_csv ( $sorted );
+	// save_csv ( $sorted );
     // To display array data
     // print_r($sorted);
     echo "</pre>";
