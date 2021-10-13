@@ -21,7 +21,7 @@ echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
 echo "<form method=\"post\">\n";
 echo "<input type=\"hidden\" name=\"new\" value=\"1\">\n";
 echo "<B>Tapahtuma: </B><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
-echo "<B>PVM: </B><input type=\"text\" size=\"10\" name=\"pvm\" value=\"" . $pvm . "\"></input><input type=\"submit\" value=\"Uusi\"/>\n";
+echo "<B>PVM: </B><input type=\"pvm\" name=\"pvm\" value=\"" . $pvm . "\"></input><input type=\"submit\" value=\"Uusi\"/>\n";
 echo "</form><br>\n";
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ( $_POST["new"] == "1" ) { // Lisätään uusi tapahtuma
 		$tapahtuma = test_input($_POST["tapahtuma"]);
 		$pvm = test_input($_POST["pvm"]);
-		$current = array('tapahtuma' => $tapahtuma, 'pvm' => $pvm, 'file' => "ilmot/" . $pvm . str_replace(" ", "_", $tapahtuma) . ".csv" );
+		$current = array('tapahtuma' => $tapahtuma, 'pvm' => $pvm, 'file' => "ilmot/" . $pvm . "_" . str_replace(" ", "_", $tapahtuma) . ".csv" );
 		save_json (json_encode($current), "current.json");
 	}
 
