@@ -19,7 +19,7 @@ require_once("lib.php"); /* Ainakin test_input ja addcsv */
 <?php
 if ($_GET["static"] == true ) { // näytetään kiinteät numerot
 	$file = "ilmot/static.csv";
-	$tapahtuma = "Karhun kiinteät numerot"
+	$tapahtuma = "Karhun kiinteät numerot";
 }
 
 echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
@@ -28,7 +28,7 @@ echo "<input type=\"hidden\" name=\"new\" value=\"1\">\n";
 echo "<B>Tapahtuma: </B><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
 echo "<B>PVM: </B><input type=\"date\" name=\"pvm\" value=\"" . $pvm . "\"></input><input type=\"submit\" value=\"Uusi\"/>\n";
 echo "</form><br>\n";
-echo "<br><a href=\"\&static=true">Näytä kiinteät numerot</a><br>\n";
+echo "<br><a href=\"\&static=true\">Näytä kiinteät numerot</a><br>\n";
 
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
