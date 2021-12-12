@@ -28,7 +28,7 @@ echo "<input type=\"hidden\" name=\"new\" value=\"1\">\n";
 echo "<B>Tapahtuma: </B><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
 echo "<B>PVM: </B><input type=\"date\" name=\"pvm\" value=\"" . $pvm . "\"></input><input type=\"submit\" value=\"Uusi\"/>\n";
 echo "</form><br>\n";
-echo "<br><a href=\"\&static=true\">Näytä kiinteät numerot</a><br>\n";
+echo "<br><a href=\"$PHP_SELF?static=true\">Näytä kiinteät numerot</a><br>\n";
 
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
