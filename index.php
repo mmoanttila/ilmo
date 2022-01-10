@@ -82,7 +82,7 @@ if ($sorted !== FALSE ) { // Saatiin csv auki, näytetään ilmoittautuneet
 echo "</tbody></table>\n";
 echo "<br><hr>\n";
 echo "<pre>";
-save_json (json_encode($sorted, JSON_PRETTY_PRINT));
+// save_json (json_encode($sorted, JSON_PRETTY_PRINT));
 //To display array data
 //print_r($sorted);
 echo "</pre>";
