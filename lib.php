@@ -91,9 +91,9 @@ function dumpcsv ( $lines ) {
 }
 
 function save_json ( $data, $file="ilmot.json" ) {
-	$fd = fopen($file, "a");
+	$fd = fopen($file, "w");
 	if ( $fd != FALSE ) {
-		fwrite ($fd, $data + "\n");
+		fwrite ($fd, $data);
 		fclose ($fd);
 	}
 }
