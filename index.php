@@ -12,7 +12,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 <?php
 require_once("current.php");
 $now = localtime(time(), true);
-$pvm_now=$now[tm_year]+1900 . "-" . $now[tm_mon]+1 . "-" $now[tm_mday];
+$pvm_now=$now[tm_year]+1900 . "-" . $now[tm_mon]+1 . "-" . $now[tm_mday];
 if ( $pvm < $pvm_now) { // Onko tuleva vai vanha tapahtumaa
   echo "<title>Ilmo EX-" . $tapahtuma . " " . $pvm ."</title>\n";
 } else {
@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
+if ( $pvm >= $pvm_now) { // Onko tuleva vai vanha tapahtuma
 ?>
 <div>
 <form method="POST">
@@ -67,6 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br>
 </form>
 </div>
+<?php
+} // Oli tuleva tapahtuma
+
 <div class="separator">Ilmoittautuneet:</div>
 <table class="ilmo">
   <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></thead>
