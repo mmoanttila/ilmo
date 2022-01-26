@@ -11,7 +11,13 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <?php
 require_once("current.php");
-echo "<title>Ilmo " . $tapahtuma . " " . $pvm ."</title>\n";
+$now = localtime(time(), true);
+$pvm_now=$now[tm_year]+1900 . "-" . $now[tm_mon]+1 . "-" $now[tm_mday];
+if ( $pvm < $pvm_now) { // Onko tuleva vai vanha tapahtumaa
+  echo "<title>Ilmo EX-" . $tapahtuma . " " . $pvm ."</title>\n";
+} else {
+  echo "<title>Ilmo " . $tapahtuma . " " . $pvm ."</title>\n";
+}
 ?>
 <style> 
 .nro { width: 3em; } 
