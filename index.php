@@ -70,7 +70,7 @@ if ( $pvm >= $pvm_now) { // Onko tuleva vai vanha tapahtuma
 </div>
 <?php
 } // Oli tuleva tapahtuma
-
+?>
 <div class="separator">Ilmoittautuneet:</div>
 <table class="ilmo">
   <thead><tr><th class="nro">Nro:</th><th class="nimi">Nimi:</th></thead>
