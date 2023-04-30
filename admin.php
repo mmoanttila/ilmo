@@ -21,19 +21,30 @@ if ($_GET["static"] == true ) { // näytetään kiinteät numerot
 	$file = "ilmot/static.csv";
 	$tapahtuma = "Karhun kiinteät numerot";
 }
+if ($_GET["static"] == "sarjakrossit" ) { // näytetään sarjakrossi numerot
+	$file = "ilmot/sarjakrossit.csv";
+	$tapahtuma = "Sarjakrossinumerot";
+}
 
 echo "<H2>Moro " . $user->user_firstname . "</H2>\n";
-if ($_GET["static"] != true ) { // "normaali versio"
+if ($_GET["static"] != true and $_GET["static"] != "sarjakrossit") { // "normaali versio"
 	echo "<form method=\"post\">\n";
 	echo "<input type=\"hidden\" name=\"new\" value=\"1\">\n";
 	echo "<B>Tapahtuma: </B><input type=\"text\" size=\"30\" name=\"tapahtuma\" value=\"" . $tapahtuma . "\"></input>\n";
 	echo "<B>PVM: </B><input type=\"date\" name=\"pvm\" value=\"" . $pvm . "\"></input><input type=\"submit\" value=\"Uusi\"/>\n";
 	echo "</form><br>\n";
 	echo "<a href=\"$PHP_SELF?static=true\">Näytä kiinteät numerot</a><br><br>\n";
+	echo "<a href=\"$PHP_SELF?static=sarjakrossit\">Näytä sarjakrossinumerot</a><br><br>\n";
 }
 
 if ($_GET["static"] == true ) { // näytetään kiinteät numerot
 	echo "<a href=\"$PHP_SELF\">Näytä seuraava tapahtuma</a><br><br>\n";
+	echo "<a href=\"$PHP_SELF?static=sarjakrossit\">Näytä sarjakrossinumerot</a><br><br>\n";
+} 
+
+if ($_GET["static"] == "sarjakrossit" ) { // näytetään sarjakrossinumerot
+	echo "<a href=\"$PHP_SELF\">Näytä seuraava tapahtuma</a><br><br>\n";
+	echo "<a href=\"$PHP_SELF?static=true\">Näytä kiinteät numerot</a><br><br>\n";
 } 
 
 $nro = $nimi = "";
