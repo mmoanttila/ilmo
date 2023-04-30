@@ -37,7 +37,7 @@ if ($_GET["static"] != true and $_GET["static"] != "sarjakrossit") { // "normaal
 	echo "<a href=\"$PHP_SELF?static=sarjakrossit\">Näytä sarjakrossinumerot</a><br><br>\n";
 }
 
-if ($_GET["static"] == true ) { // näytetään kiinteät numerot
+if ($_GET["static"] == true AND $_GET["static"] != "sarjakrossit") { // näytetään kiinteät numerot
 	echo "<a href=\"$PHP_SELF\">Näytä seuraava tapahtuma</a><br><br>\n";
 	echo "<a href=\"$PHP_SELF?static=sarjakrossit\">Näytä sarjakrossinumerot</a><br><br>\n";
 } 
