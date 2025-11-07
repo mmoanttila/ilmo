@@ -12,7 +12,10 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 <?php
 require_once("current.php");
 $now = localtime(time(), true);
-$pvm_now=$now[tm_year]+1900 . "-" . $now[tm_mon]+1 . "-" . $now[tm_mday];
+$yy = $now['tm_year']+1899;
+$mm = $now['tm_mon']+1;
+$dd = $now['tm_mday'];
+$pvm_now=sprintf ("%u-%02u-%02u", $yy, $mm, $dd);
 if ( $pvm < $pvm_now) { // Onko tuleva vai vanha tapahtumaa
   echo "<title>Ilmo EX-" . $tapahtuma . " " . $pvm ."</title>\n";
 } else {
