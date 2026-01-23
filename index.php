@@ -29,6 +29,44 @@ if ( $pvm < $pvm_now) { // Onko tuleva vai vanha tapahtumaa
 .separator { border: 1px solid black; text-align: center; background: #b6b6b6; }
 .submit { height: 2em; width: 5em; justify-content: center; align-items: center;}
 .ilmo { border: 1px solid black; }
+
+#nayta_ehdot {
+  top: 0;
+  right: 100%;
+  bottom: 100%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms;
+  background-color: #34495E;
+}
+#nayta_ehdot:target {
+  pointer-events: all;
+  opacity: 1;
+}
+#nayta_ehdot #target-inner {
+  position: absolute;
+  display: block;
+  padding: 12px;
+  line-height: 1.5;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20%);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.5);
+  background: white;
+}
+#nayta_ehdot a.close {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  transition: opacity 200ms;
+}
+
 </style>
 </head>
 <body>
@@ -66,6 +104,33 @@ if ( $pvm >= $pvm_now) { // Onko tuleva vai vanha tapahtuma
 <form method="POST">
 <div class="nro"><label for="nro">Nro: </label><input id="nro" type="number" style="width:7em" name="Nro" max="9999" value="" required></div>
 <div class="nimi"><label for="nimi">Nimi: </label><input id="nimi" type="text" name="Nimi" size="30" value="" required></div>
+<br>
+<div class="ehdot">Olen lukenut <a href="#nayta_ehdot">Karhuenduron säännöt</a> ja hyväksyn ne. <input id="ehdot" type="checkbox" name="ehdot" required></div>
+<div id="nayta_ehdot">
+  <div id="target-inner">
+  <a href="#" class="close"></a>
+    <H2>Säännöt</H2>
+<ul>
+<li>Ajaminen tapahtuu aina omalla vastuulla.</li>
+<li>Kuljettajalla oltava asianmukaiset ajovarusteet.</li>
+<li>Pyörässä tulee olla vähintään rekisteröimättöman maastoajoneuvon liikennevakuutus.</li>
+<li>Pyörän ja erityisesti äänenvaimennuksen tulee olla kunnossa.</li>
+<li>Pyörää huollettaessa on käytettävä huoltomattoa.</li>
+<li>Varikolla ajetaan vain kävelyvauhtia.</li>
+<li>Jokainen käyttäjä hoitaa omat roskansa pois alueelta.</li>
+<li>Ajo on sallittu vain merkityllä reitillä.</li>
+<li>Jokaisella kuljettajalla on auttamisvelvoite. Kanssakuljettajaa tulee auttaa esim.
+    kaatuessa, mahdollisesti loukkaantuessa tai muuten apua tarvittaessa.</li>
+<li>Polttoainesäiliöt on säilytettävä autoissa tai peräkärryssä.</li>
+<li>Avotulen teko maastoon on ehdottomasti kielletty.</li>
+<li>Tupakointi on sallittu vain erikseen niille varatuilla alueilla.</li>
+<li>Ajotapahtumissa käytettävillä reiteillä ajo on sallittu ainoastaan ajotapahtumien aikana.</li>
+<li>Ajotapahtumissa tulee olla vähintään kaksi 6 kg:n jauhesammutinta järjestäjän toimesta.</li>
+<li>Ajotapahtumissa järjestäjä huolehtii, että paikalla on lapioita ja imeytysturvetta mahdollisten öljyvuotojen varalle.</li>
+<li>Ennen ajotapahtuman alkua pidetään ajajakokous sekä ajetaan tutustumiskierros.</li>
+</ul>
+  </div>
+</div>
 <br>
 <div class="submit" style="width:30%"><input class="submit" style="width:10em" type="Submit" value="Lisää"></div>
 <br>
