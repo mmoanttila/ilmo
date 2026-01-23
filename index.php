@@ -12,7 +12,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 <?php
 require_once("current.php");
 $now = localtime(time(), true);
-$yy = $now['tm_year']+1899;
+$yy = $now['tm_year']+1900;
 $mm = $now['tm_mon']+1;
 $dd = $now['tm_mday'];
 $pvm_now=sprintf ("%u-%02u-%02u", $yy, $mm, $dd);
@@ -73,7 +73,11 @@ if ( $pvm < $pvm_now) { // Onko tuleva vai vanha tapahtumaa
 <?php
 require_once("current.php");
 require_once("lib.php"); /* Ainakin test_input ja addcsv */
-echo "<H2>" . $tapahtuma . " " . $pvm . " ilmoittautuminen</H2>\n";
+if ( $pvm < $pvm_now) { // Onko tuleva vai vanha tapahtumaa
+  echo "<H2>EX-" . $tapahtuma . " " . $pvm ." ilmoittautuneet</H2>\n";
+} else {
+  echo "<H2>" . $tapahtuma . " " . $pvm . " ilmoittautuminen</H2>\n";
+}
 
 $nro = $nimi = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -165,5 +169,6 @@ echo "<pre>";
 //print_r($sorted);
 echo "</pre>";
 ?>
+<!-- <?php echo "$yy-$mm-$dd := $pvm < $pvm_now" ?> -->
 </body>
 </html>
